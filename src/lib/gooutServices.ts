@@ -256,7 +256,6 @@ export const applyGoOut = async (
   Cookie: string
 ) => {
   const data = await getCustomizedFormData(formTplStr, dateTimeStp);
-  console.log(data);
   const res = await axios(
     'https://scenter.sdu.edu.cn/tp_fp/formParser?status=update&formid=d05bb8b4-4a36-4e13-8d73-f681e03e&workflowAction=startProcess&seqId=&unitId=&workitemid=&process=c5c3de57-4044-43e9-bc25-f88206c0c74d',
     {
