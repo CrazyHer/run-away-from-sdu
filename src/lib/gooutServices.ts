@@ -258,6 +258,8 @@ export const applyGoOut = async (
       headers: {
         'content-type': 'text/plain;charset=UTF-8',
         Cookie,
+        Referer:
+          'https://scenter.sdu.edu.cn/tp_fp/formParser?status=select&formid=d05bb8b4-4a36-4e13-8d73-f681e03e&service_id=87dc6da9-9ad8-4458-9654-90823be0d5f6&process=c5c3de57-4044-43e9-bc25-f88206c0c74d&seqId=&seqPid=&privilegeId=2476634395f5754441ad9f3090319790',
       },
       data,
     }
