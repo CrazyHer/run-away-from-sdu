@@ -29,8 +29,8 @@ async function app() {
           await batchSubmitGooutApplication(
             userId,
             password,
-            moment(date, 'YYYY-MM-DD').unix(),
-            moment(endDate, 'YYYY-MM-DD').unix(),
+            moment(date, 'YYYY-MM-DD').valueOf(),
+            moment(endDate, 'YYYY-MM-DD').valueOf(),
             (dateTimeStp, success, error) =>
               success
                 ? console.log(
@@ -46,7 +46,7 @@ async function app() {
           await submitGooutApplication(
             userId,
             password,
-            moment(date, 'YYYY-MM-DD').unix()
+            moment(date, 'YYYY-MM-DD').valueOf()
           );
           console.log(`${date} 申请成功`);
         }

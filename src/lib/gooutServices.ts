@@ -139,6 +139,7 @@ export const getCustomizedFormData = async (
   const dw = /"unit_name":"(.+?)"/.exec(res)?.[1] || ''; // 单位
   const xm = /"user_name":"(.+?)"/.exec(res)?.[1] || ''; // 姓名
   const xh = /"StudentIdNo":"(.+?)"/.exec(res)?.[1] || ''; // 学号
+  const crxq = /"CRXQ":"(.+?)"/.exec(res)?.[1] || ''; // 出入校区
 
   res = res
     .replace(
@@ -168,6 +169,10 @@ export const getCustomizedFormData = async (
     .replace(
       /"name":"SFLX","source":"process","type":"string","value":""/g,
       `"name":"SFLX","source":"process","type":"string","value":"${sflx}","_t": 1,"_o": { "value": "" }` // 补全学生类型
+    )
+    .replace(
+      /"name":"CRXQ","source":"process","type":"string","value":""/g,
+      `"name":"CRXQ","source":"process","type":"string","value":"${crxq}","_t": 1,"_o": { "value": "" }` // 补全出入校区
     )
     .replace(
       /"name":"WCSY","source":"process","type":"string","value":""/g,
@@ -258,6 +263,8 @@ export const applyGoOut = async (
       headers: {
         'content-type': 'text/plain;charset=UTF-8',
         Cookie,
+        Referer:
+          'https://scenter.sdu.edu.cn/tp_fp/formParser?status=select&formid=d05bb8b4-4a36-4e13-8d73-f681e03e&service_id=87dc6da9-9ad8-4458-9654-90823be0d5f6&process=c5c3de57-4044-43e9-bc25-f88206c0c74d&seqId=&seqPid=&privilegeId=2476634395f5754441ad9f3090319790',
       },
       data,
     }
