@@ -139,6 +139,7 @@ export const getCustomizedFormData = async (
   const dw = /"unit_name":"(.+?)"/.exec(res)?.[1] || ''; // 单位
   const xm = /"user_name":"(.+?)"/.exec(res)?.[1] || ''; // 姓名
   const xh = /"StudentIdNo":"(.+?)"/.exec(res)?.[1] || ''; // 学号
+  const crxq = /"CRXQ":"(.+?)"/.exec(res)?.[1] || ''; // 出入校区
 
   res = res
     .replace(
@@ -168,6 +169,10 @@ export const getCustomizedFormData = async (
     .replace(
       /"name":"SFLX","source":"process","type":"string","value":""/g,
       `"name":"SFLX","source":"process","type":"string","value":"${sflx}","_t": 1,"_o": { "value": "" }` // 补全学生类型
+    )
+    .replace(
+      /"name":"CRXQ","source":"process","type":"string","value":""/g,
+      `"name":"CRXQ","source":"process","type":"string","value":"${crxq}","_t": 1,"_o": { "value": "" }` // 补全出入校区
     )
     .replace(
       /"name":"WCSY","source":"process","type":"string","value":""/g,
@@ -251,6 +256,7 @@ export const applyGoOut = async (
   Cookie: string
 ) => {
   const data = await getCustomizedFormData(formTplStr, dateTimeStp);
+  console.log(data);
   const res = await axios(
     'https://scenter.sdu.edu.cn/tp_fp/formParser?status=update&formid=d05bb8b4-4a36-4e13-8d73-f681e03e&workflowAction=startProcess&seqId=&unitId=&workitemid=&process=c5c3de57-4044-43e9-bc25-f88206c0c74d',
     {
