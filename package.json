@@ -8,7 +8,7 @@
     "dist"
   ],
   "scripts": {
-    "test": "eslint src",
+    "lint": "eslint src",
     "build": "tsc"
   },
   "repository": {
