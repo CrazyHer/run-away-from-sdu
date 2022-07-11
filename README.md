@@ -2,6 +2,8 @@
 
 ![workflow](https://github.com/CrazyHer/run-away-from-sdu/actions/workflows/CI.yml/badge.svg)
 
+[![npm version](https://badge.fury.io/js/run-away-from-sdu.svg)](https://badge.fury.io/js/run-away-from-sdu)
+
 本脚本旨在为沙袋师生提供更便捷和稳定的山东大学信息中心出校申请服务
 
 （ 说白了就是免去每次出校都要填写繁琐的表单，一键用上次提交出校申请的信息再帮你申一次
