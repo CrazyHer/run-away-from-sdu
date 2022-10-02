@@ -58,6 +58,7 @@ export const getFormTplStr = async (Cookie: string) => {
           fdydh: null,
           CRXQ_TEXT: null,
           CRXQ: null,
+          SFLKHCQ: null,
           wclx: null,
           wcsy: null,
           jtsyms: null,
@@ -101,6 +102,8 @@ export const getFormTplStr = async (Cookie: string) => {
           pdgq: null,
           xqsd: null,
           GJXYXS: null,
+          DSPPD: null,
+          YYPXS: null,
         };
         delete formTpl.body.dataStores[key.replace(/_record/g, '')].rowSet
           .primary[0].pk_id;
@@ -140,7 +143,8 @@ export const getCustomizedFormData = async (
   const xm = /"user_name":"(.+?)"/.exec(res)?.[1] || ''; // 姓名
   const xh = /"StudentIdNo":"(.+?)"/.exec(res)?.[1] || ''; // 学号
   const crxq = /"CRXQ":"(.+?)"/.exec(res)?.[1] || ''; // 出入校区
-
+  const dsppd = /"DSPPD":"(.+?)"/.exec(res)?.[1] || '';
+  const yypxs = /"YYPXS":"(.+?)"/.exec(res)?.[1] || '';
   res = res
     .replace(
       /"name":"zts","source":"process","type":"string","value":""/g,
@@ -240,6 +244,18 @@ export const getCustomizedFormData = async (
     .replace(
       /"name":"SYS_DATE","source":"process","type":"string","value":""/g,
       `"name":"SYS_DATE","source":"process","type":"string","value":"${new Date().valueOf()}"`
+    )
+    .replace(
+      /"name":"DSPPD","source":"process","type":"string","value":""/g,
+      `"name":"DSPPD","source":"process","type":"string","value":"${dsppd}","_t": 1,"_o": { "value": "" }`
+    )
+    .replace(
+      /"name":"SFLKHCQ","source":"process","type":"string","value":""/g,
+      `"name":"SFLKHCQ","source":"process","type":"string","value":"","_t": 1`
+    )
+    .replace(
+      /"name":"YYPXS","source":"process","type":"string","value":""/g,
+      `"name":"YYPXS","source":"process","type":"string","value":"${yypxs}","_t": 1,"_o": { "value": "" }`
     );
   return res;
 };

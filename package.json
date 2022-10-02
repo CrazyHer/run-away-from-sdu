@@ -1,6 +1,6 @@
 {
   "name": "run-away-from-sdu",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "山大? 快润! 山东大学一键申请出校脚本",
   "main": "dist/index.js",
   "bin": "dist/bin/run-away-from-sdu.js",
