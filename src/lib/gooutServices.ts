@@ -145,6 +145,7 @@ export const getCustomizedFormData = async (
   const crxq = /"CRXQ":"(.+?)"/.exec(res)?.[1] || ''; // 出入校区
   const dsppd = /"DSPPD":"(.+?)"/.exec(res)?.[1] || '';
   const yypxs = /"YYPXS":"(.+?)"/.exec(res)?.[1] || '';
+  const jtsyms = /"jtsyms":"(.+?)"/.exec(res)?.[1] || ''; // 出校理由
   res = res
     .replace(
       /"name":"zts","source":"process","type":"string","value":""/g,
@@ -215,7 +216,7 @@ export const getCustomizedFormData = async (
     )
     .replace(
       /"name":"JTSYMS","source":"process","type":"string","value":""/g,
-      `"name":"JTSYMS","source":"process","type":"string","value":"外出学习","_t": 1,"_o": { "value": "" }` // 出校理由
+      `"name":"JTSYMS","source":"process","type":"string","value":"${jtsyms}","_t": 1,"_o": { "value": "" }` // 出校理由
     )
     .replace(
       /"name":"XM","source":"process","type":"string","value":""/g,
